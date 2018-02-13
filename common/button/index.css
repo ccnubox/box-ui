@@ -1,0 +1,10 @@
+.common {
+    border-radius: 10;
+    background-color: #6767fa;
+}
+.text{
+    text-align: center;
+    height: 100;
+    line-height: 100;
+    color: #fff;
+}
