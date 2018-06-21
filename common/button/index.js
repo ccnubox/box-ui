@@ -7,7 +7,9 @@ import { createElement, Component } from "rax";
 function BoxButton(props) {
   const customStyle = {
     container: {
-      width: 375
+      width: props.width || 375,
+      height: props.height || 100,
+      lineHeight: props.lineHeight || 100
     }
   };
   return (
@@ -15,11 +17,13 @@ function BoxButton(props) {
       onPress={props.onClickHandler}
       style={[styles.common, customStyle.container]}
     >
-      {props.children ? props.children :
-      <View>
-        <Text style={styles.text}>{props.text}</Text>
-      </View>
-      }
+      {props.children ? (
+        props.children
+      ) : (
+        <View>
+          <Text style={styles.text}>{props.text}</Text>
+        </View>
+      )}
     </Button>
   );
 }
