@@ -8,7 +8,9 @@ function BoxTextInput(props) {
   const customStyle = {
     container: {
       width: props.width || 375,
-      height: props.height || 100
+      height: props.height || 100,
+      lineHeight: props.lineHeight || 100,
+      keyboardType: props.keyboardType || "default"
     }
   };
   return (
@@ -16,7 +18,7 @@ function BoxTextInput(props) {
       value={props.value}
       placeholder={props.placeholder || ""}
       onChange={props.onChangeHandler}
-      style={[styles.common, customStyle.container]}
+      style={[styles.common, customStyle.container, props.extraStyle || {}]}
     />
   );
 }
