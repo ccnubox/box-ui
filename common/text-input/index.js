@@ -5,12 +5,18 @@ import styles from "./index.css";
 import { createElement, Component } from "rax";
 
 function BoxTextInput(props) {
+  const customStyle = {
+    container: {
+      width: props.width || 375,
+      height: props.height || 100
+    }
+  };
   return (
     <TextInput
       value={props.value}
-      placeholder="Enter text to see events"
+      placeholder={props.placeholder || ""}
       onChange={props.onChangeHandler}
-      style={styles.common}
+      style={[styles.common, customStyle.container]}
     />
   );
 }
