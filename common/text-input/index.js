@@ -10,15 +10,16 @@ function BoxTextInput(props) {
       width: props.width || 375,
       height: props.height || 100,
       lineHeight: props.lineHeight || 100,
-      keyboardType: props.keyboardType || "default"
+      
     }
   };
   return (
     <TextInput
       value={props.value}
       placeholder={props.placeholder || ""}
-      onChange={props.onChangeHandler}
-      style={[styles.common, customStyle.container, props.extraStyle || {}]}
+      keyboardType={props.keyboardType || "default"}
+      onChange={props.onChange}
+      style={[styles.common, customStyle.container, props.style || {}]}
     />
   );
 }

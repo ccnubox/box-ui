@@ -14,8 +14,8 @@ function BoxButton(props) {
   };
   return (
     <Button
-      onPress={props.onClickHandler}
-      style={[styles.common, customStyle.container]}
+      onPress={props.onPress}
+      style={[styles.common, customStyle.container, props.style || {}]}
     >
       {props.children ? (
         props.children
