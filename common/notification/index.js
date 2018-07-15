@@ -12,18 +12,18 @@ class Notification extends Component {
     show: true
   };
   componentWillMount() {
-    request({
-      method: "GET",
-      url: "xxxx"
-    })
-      .then(data => {
-        this.setState({
-          text: data
-        });
-      })
-      .catch(err => {
-        //
-      });
+    // request({
+    //   method: "GET",
+    //   url: "xxxx"
+    // })
+    //   .then(data => {
+    //     this.setState({
+    //       text: data
+    //     });
+    //   })
+    //   .catch(err => {
+    //     //
+    //   });
   }
   hide = () => {
     this.setState({
