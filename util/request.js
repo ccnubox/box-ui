@@ -12,6 +12,9 @@ function request(options) {
     };
     requestOptions.body = options.body;
   }
+  if (options.headers) {
+    requestOptions.headers = options.headers
+  }
   return new Promise((resolve, reject) => {
     stream.fetch(requestOptions, ret => {
       if (ret.ok) {
