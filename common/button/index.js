@@ -21,7 +21,7 @@ function BoxButton(props) {
         props.children
       ) : (
         <View>
-          <Text style={styles.text}>{props.text}</Text>
+          <Text style={[styles.text, props.textStyle || {}]}>{props.text}</Text>
         </View>
       )}
     </Button>
