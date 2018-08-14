@@ -1,3 +1,4 @@
+import { createElement, Component, PropTypes } from "rax";
 import Animated from "rax-animated";
 import Touchable from "rax-touchable";
 import styles from "./index.css";
