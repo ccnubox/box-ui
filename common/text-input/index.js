@@ -10,7 +10,7 @@ function BoxTextInput(props) {
       width: props.width || 375,
       height: props.height || 100,
       lineHeight: props.lineHeight || 100,
-      
+      fontSize: props.fontSize || 32,
     }
   };
   return (
@@ -20,6 +20,7 @@ function BoxTextInput(props) {
       keyboardType={props.keyboardType || "default"}
       onChange={props.onChange}
       style={[styles.common, customStyle.container, props.style || {}]}
+      {...props}
     />
   );
 }
