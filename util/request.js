@@ -13,17 +13,25 @@ function request(options) {
     requestOptions.body = options.body;
   }
   if (options.headers) {
-    requestOptions.headers = options.headers
+    requestOptions.headers = options.headers;
   }
-  return new Promise((resolve, reject) => {
-    stream.fetch(requestOptions, ret => {
-      if (ret.ok) {
-        resolve(JSON.parse(ret.data));
-      } else {
-        reject(ret);
-      }
-    });
-  });
+
+  return Promise.race([
+    new Promise((resolve, reject) => {
+      stream.fetch(requestOptions, ret => {
+        if (ret.ok) {
+          resolve(JSON.parse(ret.data));
+        } else {
+          reject(ret);
+        }
+      });
+    }),
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject("请求超时");
+      }, 5000);
+    })
+  ]);
 }
 
 export default request;
