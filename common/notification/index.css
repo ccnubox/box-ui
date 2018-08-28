@@ -1,10 +1,13 @@
 .container {
-  height: 40;
-  background-color: bisque;
+  height: 50;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: #fefcec;
+  padding-left: 20;
+  padding-right: 20;
 }
 .text {
-    color: red;
+  color: #f76a24;
+  font-size: 32;
 }
