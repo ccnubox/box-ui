@@ -45,7 +45,7 @@ class Notification extends Component {
   render() {
     if (this.state.text === "" || !this.state.show) return null;
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, this.props.style]}>
         <Text style={styles.text}>{this.state.text}</Text>
         <Touchable onPress={this.onBtnPressed}>
           <Text style={styles.text}>{this.state.btnText}</Text>
