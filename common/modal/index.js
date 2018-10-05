@@ -19,3 +19,17 @@ export const confirm = (message, okStr = "确定", cancelStr = "取消") => {
     );
   });
 };
+
+export const weexAlert = message => {
+  return new Promise((resolve, reject) => {
+    modal.alert(
+      {
+        message,
+        duration: 0.3
+      },
+      function(value) {
+        resolve(value);
+      }
+    );
+  });
+};
