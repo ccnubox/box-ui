@@ -7,7 +7,6 @@ import styles from "./index.css";
 class Dropdown extends Component {
   constructor(props) {
     super(props);
-    this.fadeAnim = new Animated.Value(0);
   }
 
   static propTypes = {
@@ -27,13 +26,6 @@ class Dropdown extends Component {
   state = {
     visible: false
   };
-
-  animated(state, callback) {
-    const { visible, value } = state;
-    Animated.timing(this.fadeAnim, { toValue: visible === true ? 1 : 0 }).start(
-      callback
-    );
-  }
 
   show() {
     this.setState({
