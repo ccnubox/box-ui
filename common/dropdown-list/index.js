@@ -1,9 +1,8 @@
 import { createElement, Component, PropTypes } from "rax";
-import Animated from "rax-animated";
 import Touchable from "rax-touchable";
-import styles from "./index.css";
+import View from "rax-view";
 
-const { View: AnimatedView } = Animated;
+import styles from "./index.css";
 
 class Dropdown extends Component {
   constructor(props) {
@@ -14,11 +13,15 @@ class Dropdown extends Component {
   static propTypes = {
     onHide: PropTypes.func,
     onShow: PropTypes.func,
-    visible: PropTypes.bool
+    visible: PropTypes.bool,
+    top: PropTypes.number,
+    width: PropTypes.number
   };
 
   static defaultProps = {
-    visible: false
+    visible: false,
+    width: 550,
+    top: 0
   };
 
   state = {
@@ -33,23 +36,15 @@ class Dropdown extends Component {
   }
 
   show() {
-    const currentState = { visible: true };
-    this.setState(currentState, () =>
-      this.animated(
-        currentState,
-        () => this.props.onShow && this.props.onShow(currentState)
-      )
-    );
+    this.setState({
+      visible: true
+    });
   }
 
   hide() {
-    const currentState = { visible: false };
-    this.animated(currentState, () =>
-      this.setState(
-        currentState,
-        () => this.props.onHide && this.props.onHide(currentState)
-      )
-    );
+    this.setState({
+      visible: false
+    });
   }
 
   toggle(visible) {
@@ -75,23 +70,21 @@ class Dropdown extends Component {
     });
   }
 
-  componentDidMount() {
-    this.animated(this.state);
-  }
+
+  onMaskPress = () => {
+    this.hide();
+  };
 
   render() {
-    const { children } = this.props;
+    const { children, top, width } = this.props;
     const { visible } = this.state;
     return (
       visible && (
-        <AnimatedView
-          onClick={() => {
-            this.hide();
-          }}
-          style={styles.center}
-        >
-          <Touchable>{children}</Touchable>
-        </AnimatedView>
+        <Touchable onPress={this.onMaskPress} style={styles.container}>
+          <View style={[styles.dropdown, { top, width }]}>
+            <View>{children}</View>
+          </View>
+        </Touchable>
       )
     );
   }

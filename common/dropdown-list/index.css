@@ -1,5 +1,19 @@
+.dropdown {
+  position: absolute;
+  width: 550;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
 
-.center {
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   flex-direction: row;
