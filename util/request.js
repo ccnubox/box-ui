@@ -29,7 +29,7 @@ function request(options) {
     new Promise((resolve, reject) => {
       setTimeout(() => {
         reject("请求超时");
-      }, 5000);
+      }, options.timeout || 5000);
     })
   ]);
 }
