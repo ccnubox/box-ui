@@ -2,6 +2,7 @@ const stream = require("@weex-module/stream");
 const native = require("@weex-module/test");
 
 function request(options) {
+  let timeout;
   let startTime = Date.now();
   let requestOptions = {
     method: options.method,
@@ -21,6 +22,7 @@ function request(options) {
   return Promise.race([
     new Promise((resolve, reject) => {
       stream.fetch(requestOptions, ret => {
+        clearTimeout(timeout)
         // 请求时间打点
         native.reportInsightApiEvent(
           `${options.method} ${options.url}`,
@@ -35,7 +37,7 @@ function request(options) {
       });
     }),
     new Promise((resolve, reject) => {
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         // 请求时间打点
         native.reportInsightApiEvent(
           `${options.method} ${options.url}`,
